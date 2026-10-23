@@ -1,0 +1,148 @@
+{
+  "started_utc": "2026-10-23T13:43:54.1175197Z",
+  "finished_utc": "2026-10-23T13:43:56.6108662Z",
+  "cpu": "12th Gen Intel(R) Core(TM) i9-12900H",
+  "logical_processors": 20,
+  "os": "Microsoft Windows NT 10.0.26200.0",
+  "process_bits": 64,
+  "power_scheme": "电源方案 GUID: 85d583c5-cf2e-4197-80fd-3789a227a72c  (均衡模式)",
+  "affinity": "OS default; core type and background load not controlled",
+  "build_configuration": "Release",
+  "executable": "build/Release/benchmark_files.exe",
+  "executable_sha256": "8df51b9d15e3332cd3b4c098a574bdbc0d7f0ae780ab9a920a5ceb766ded5e2e",
+  "source_base_commit": "22eaa739c59b7f0c6c8adcf949d6f695ff806e45",
+  "working_tree_state": [
+    " M .gitignore",
+    " M CMakeLists.txt",
+    " M include/huffman/benchmark.hpp",
+    " M src/benchmark.cpp",
+    "?? benchmarks/",
+    "?? data/",
+    "?? scripts/",
+    "?? tests/check_benchmark_cli.cmake",
+    "?? tests/data/",
+    "?? tests/test_benchmark.cpp"
+  ],
+  "source_sha256": [
+    {
+      "path": "benchmarks/benchmark_files.cpp",
+      "sha256": "a0f1945dd91117cd3b045e3759b8efc14eb1beddfbc0e939fc431829656f8471"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "fa91af4f74cf4fc65304fa7a3c15cb0903f95cf3a28f2833ef8140bf1aac8d21"
+    },
+    {
+      "path": "include/huffman/benchmark.hpp",
+      "sha256": "6157e7af233599dc7ba4e1c6b14e15379f0a96659e424dca6426169a0f2acf49"
+    },
+    {
+      "path": "include/huffman/decoder.hpp",
+      "sha256": "5bbe6eefb49f891089a3ff13bd8050c0aea69c3ec416c59a779251a0cf905509"
+    },
+    {
+      "path": "include/huffman/encoder.hpp",
+      "sha256": "e694b3811d584f4b660086279c365e8dcb7d27bf3140ba50fb713307ef49d990"
+    },
+    {
+      "path": "include/huffman/types.hpp",
+      "sha256": "4acef23b84cce00fd3065ce14d6cc07122145805863ebcb328e8cf5bd49f81ea"
+    },
+    {
+      "path": "src/benchmark.cpp",
+      "sha256": "f29229ed09191e802f4ed5dcdd6915ad0861688da912329b8edd023d53d2984b"
+    },
+    {
+      "path": "src/decoder_baseline.cpp",
+      "sha256": "833a3bcf9c498e6081831cad334ce8133bad99547eeebf5082380e453a7d628d"
+    },
+    {
+      "path": "src/encoder.cpp",
+      "sha256": "09d890f7b99f2d058b1971902489810b9364eb65fc8f9ab45c551d2ca18d76bb"
+    },
+    {
+      "path": "tests/test_benchmark.cpp",
+      "sha256": "213c5d373d510f8b0b1c3af4157e11e223a8144e3320e768d0ec74e95e70eec4"
+    },
+    {
+      "path": "tests/test_decoder.cpp",
+      "sha256": "968206b7452db6c3ae2f56bd5ee53080690e31e251a7315380ce224ba6ccd6bf"
+    },
+    {
+      "path": "tests/test_encoder_integration.cpp",
+      "sha256": "786b1b65846963e27165aaeb07456598119c29d434c6ac4195ae0bc539ea07b5"
+    }
+  ],
+  "arguments": [
+    "--output-dir",
+    "results/2026-10-23-byte-text",
+    "--warmup",
+    "3",
+    "--runs",
+    "30",
+    "--input",
+    "data/corpus/alice_gutenberg11.txt",
+    "--input",
+    "data/corpus/pride_gutenberg1342.txt"
+  ],
+  "inputs": [
+    {
+      "dataset_id": 1,
+      "path": "data/corpus/alice_gutenberg11.txt",
+      "bytes": 174311,
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "source_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt"
+    },
+    {
+      "dataset_id": 2,
+      "path": "data/corpus/pride_gutenberg1342.txt",
+      "bytes": 772386,
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "source_url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt"
+    }
+  ],
+  "restored_files": [
+    {
+      "dataset_id": "1",
+      "variant": "baseline",
+      "restored_file": "restored/1.baseline.bin",
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "1",
+      "variant": "base",
+      "restored_file": "restored/1.base.bin",
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "1",
+      "variant": "buffer",
+      "restored_file": "restored/1.buffer.bin",
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "2",
+      "variant": "baseline",
+      "restored_file": "restored/2.baseline.bin",
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "2",
+      "variant": "base",
+      "restored_file": "restored/2.base.bin",
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "2",
+      "variant": "buffer",
+      "restored_file": "restored/2.buffer.bin",
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "matches_input": true
+    }
+  ]
+}

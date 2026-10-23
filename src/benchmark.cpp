@@ -2,10 +2,43 @@
 
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <stdexcept>
 #include <vector>
 
 namespace huffman {
+
+BenchmarkResult summarize_timings(const std::vector<double>& samples_ms,
+                                  std::uint64_t symbol_count) {
+    if (samples_ms.empty()) {
+        throw std::invalid_argument("at least one timing sample is required");
+    }
+    for (const double sample : samples_ms) {
+        if (!std::isfinite(sample) || sample < 0) {
+            throw std::invalid_argument("timing samples must be finite and nonnegative");
+        }
+    }
+    auto sorted = samples_ms;
+    std::sort(sorted.begin(), sorted.end());
+    const auto percentile = [&sorted](double fraction) {
+        const double position = fraction * (sorted.size() - 1);
+        const auto lower = static_cast<std::size_t>(position);
+        const auto upper = std::min(lower + 1, sorted.size() - 1);
+        return sorted[lower] + (position - lower) * (sorted[upper] - sorted[lower]);
+    };
+    BenchmarkResult result;
+    result.samples_ms = samples_ms;
+    result.min_ms = sorted.front();
+    result.max_ms = sorted.back();
+    result.p25_ms = percentile(0.25);
+    result.median_ms = percentile(0.5);
+    result.p75_ms = percentile(0.75);
+    if (symbol_count != 0 && result.median_ms > 0) {
+        result.ns_per_symbol = result.median_ms * 1'000'000.0 / symbol_count;
+        result.million_symbols_per_second = symbol_count / (result.median_ms * 1000.0);
+    }
+    return result;
+}
 
 BenchmarkResult benchmark_decoder(Decoder decoder, const EncodedData& input,
                                   const DecodeTables& tables,
@@ -40,18 +73,7 @@ BenchmarkResult benchmark_decoder(Decoder decoder, const EncodedData& input,
         timings_ms.push_back(std::chrono::duration<double, std::milli>(end - start).count());
     }
 
-    std::sort(timings_ms.begin(), timings_ms.end());
-    const auto middle = timings_ms.size() / 2;
-    const double median_ms = timings_ms.size() % 2 == 0
-        ? (timings_ms[middle - 1] + timings_ms[middle]) / 2
-        : timings_ms[middle];
-    BenchmarkResult result;
-    result.median_ms = median_ms;
-    if (input.symbol_count != 0 && median_ms > 0) {
-        result.ns_per_symbol = median_ms * 1'000'000.0 / input.symbol_count;
-        result.million_symbols_per_second = input.symbol_count / (median_ms * 1000.0);
-    }
-    return result;
+    return summarize_timings(timings_ms, input.symbol_count);
 }
 
 }  // namespace huffman

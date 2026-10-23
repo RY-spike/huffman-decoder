@@ -1,0 +1,16 @@
+[
+  {
+    "filename": "alice_gutenberg11.txt",
+    "title": "Alice's Adventures in Wonderland",
+    "page": "https://www.gutenberg.org/ebooks/11",
+    "url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+    "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e"
+  },
+  {
+    "filename": "pride_gutenberg1342.txt",
+    "title": "Pride and Prejudice",
+    "page": "https://www.gutenberg.org/ebooks/1342",
+    "url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+    "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75"
+  }
+]

@@ -1,0 +1,5 @@
+ABCA
+Huffman decoding benchmark smoke test.
+Repeated symbols: aaaaaaaaaa bbbbb ccc dd e.
+Punctuation and spaces must survive exactly: 0, 1; (A/B/C)!
+UTF-8 byte input is also supported: 中文文本。

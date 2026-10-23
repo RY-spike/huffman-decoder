@@ -1,0 +1,66 @@
+Start testing: Oct 23 21:33 中国标准时间
+----------------------------------------------------------
+1/4 Testing: decoder_correctness
+1/4 Test: decoder_correctness
+Command: "C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build/Release/test_decoder.exe"
+Directory: C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build
+"decoder_correctness" start time: Oct 23 21:33 中国标准时间
+Output:
+----------------------------------------------------------
+All decoder checks passed
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"decoder_correctness" end time: Oct 23 21:33 中国标准时间
+"decoder_correctness" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/4 Testing: encoder_integration
+2/4 Test: encoder_integration
+Command: "C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build/Release/test_encoder_integration.exe"
+Directory: C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build
+"encoder_integration" start time: Oct 23 21:33 中国标准时间
+Output:
+----------------------------------------------------------
+All encoder integration checks passed
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"encoder_integration" end time: Oct 23 21:33 中国标准时间
+"encoder_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/4 Testing: benchmark_statistics
+3/4 Test: benchmark_statistics
+Command: "C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build/Release/test_benchmark.exe"
+Directory: C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build
+"benchmark_statistics" start time: Oct 23 21:33 中国标准时间
+Output:
+----------------------------------------------------------
+Benchmark statistics checks passed
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"benchmark_statistics" end time: Oct 23 21:33 中国标准时间
+"benchmark_statistics" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/4 Testing: benchmark_cli
+4/4 Test: benchmark_cli
+Command: "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe" "-DBENCHMARK_EXE=C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build/Release/benchmark_files.exe" "-DINPUT_FILE=C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/tests/data/benchmark_sample.txt" "-DOUTPUT_ROOT=C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build/benchmark-cli-tests" "-P" "C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/tests/check_benchmark_cli.cmake"
+Directory: C:/Users/a'a/Desktop/澶у垱/涓湡绛旇京/huffman-decoder-github/build
+"benchmark_cli" start time: Oct 23 21:33 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.35 sec
+----------------------------------------------------------
+Test Passed.
+"benchmark_cli" end time: Oct 23 21:33 中国标准时间
+"benchmark_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 23 21:33 中国标准时间

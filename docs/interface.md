@@ -20,7 +20,9 @@
 
 纯解码耗时从调用 `decode_*` 开始，到编号输出完成为止；不包括文件读取、码表构建、编码和编号到文本的转换。由于当前接口会清空并扩展 `output`，该耗时包含输出缓冲区操作。所有版本使用相同输入、码表、编译配置和重复次数。全文还原耗时应单独记录。
 
-统一计时入口为 `benchmark_decoder`，见 `include/huffman/benchmark.hpp`。它先预热，再重复运行并取中位数；每次都与参考编号序列核对。当前还没有真实语料的性能结论。
+单个解码器的计时入口为 `benchmark_decoder`，见 `include/huffman/benchmark.hpp`。返回的 `samples_ms` 保留实际采集顺序，`summarize_timings` 计算中位数、四分位数和吞吐量。
+
+多版本、真实文件的统一入口为 `benchmark_files`。它轮换各版本的测量顺序，分别记录 `decode_symbols` 和 `decode_and_restore_bytes`，预分配输出空间并在每次计时结束后核对结果。后者包括从编号还原字节，不包括磁盘读写。方法见 `docs/benchmarking.md`；首轮字节级实测记录见 `docs/byte-benchmark-results.md`。
 
 ## 手工样例
 

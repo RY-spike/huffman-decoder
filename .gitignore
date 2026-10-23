@@ -5,3 +5,5 @@
 *.pdb
 *.ilk
 *.suo
+/data/corpus/
+/results/**/restored/

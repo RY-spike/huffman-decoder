@@ -1,0 +1,13 @@
+dataset_id,scope,variant,status,verified_runs,input_bytes,restored_file
+1,decode_symbols,baseline,PASS,33,174311,""
+1,decode_symbols,base,PASS,33,174311,""
+1,decode_symbols,buffer,PASS,33,174311,""
+1,decode_and_restore_bytes,baseline,PASS,33,174311,"restored/1.baseline.bin"
+1,decode_and_restore_bytes,base,PASS,33,174311,"restored/1.base.bin"
+1,decode_and_restore_bytes,buffer,PASS,33,174311,"restored/1.buffer.bin"
+2,decode_symbols,baseline,PASS,33,772386,""
+2,decode_symbols,base,PASS,33,772386,""
+2,decode_symbols,buffer,PASS,33,772386,""
+2,decode_and_restore_bytes,baseline,PASS,33,772386,"restored/2.baseline.bin"
+2,decode_and_restore_bytes,base,PASS,33,772386,"restored/2.base.bin"
+2,decode_and_restore_bytes,buffer,PASS,33,772386,"restored/2.buffer.bin"

@@ -31,3 +31,21 @@ endif()
 add_executable(test_encoder_integration tests/test_encoder_integration.cpp)
 target_link_libraries(test_encoder_integration PRIVATE huffman_encoder huffman_decoder)
 add_test(NAME encoder_integration COMMAND test_encoder_integration)
+
+add_executable(benchmark_files benchmarks/benchmark_files.cpp)
+target_link_libraries(benchmark_files PRIVATE huffman_encoder huffman_decoder)
+target_compile_definitions(benchmark_files PRIVATE HUFFMAN_BUILD_CONFIG="$<CONFIG>")
+if(MSVC)
+    target_compile_options(benchmark_files PRIVATE /W4 /permissive-)
+else()
+    target_compile_options(benchmark_files PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+add_executable(test_benchmark tests/test_benchmark.cpp)
+target_link_libraries(test_benchmark PRIVATE huffman_decoder)
+add_test(NAME benchmark_statistics COMMAND test_benchmark)
+add_test(NAME benchmark_cli COMMAND ${CMAKE_COMMAND}
+    "-DBENCHMARK_EXE=$<TARGET_FILE:benchmark_files>"
+    "-DINPUT_FILE=${CMAKE_CURRENT_SOURCE_DIR}/tests/data/benchmark_sample.txt"
+    "-DOUTPUT_ROOT=${CMAKE_CURRENT_BINARY_DIR}/benchmark-cli-tests"
+    -P "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_benchmark_cli.cmake")
