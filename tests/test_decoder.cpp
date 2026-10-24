@@ -107,6 +107,21 @@ int main() {
         check_all(pack_bits(b_code + c_code + "0" + b_code, 4), long_codes,
                   {'B', 'C', 'A', 'B'});
 
+        // Exercise a 32-bit code between short codes without any hybrid table.
+        std::vector<std::uint32_t> mixed_lengths(18, 'A');
+        mixed_lengths[1] = 'B';
+        check_all(pack_bits("0" + b_code + std::string(16, '0'), 18), long_codes,
+                  mixed_lengths);
+
+        // These input-validation cases apply to all three formal decoders.
+        check_all({{}, 0, 0}, huffman::make_decode_tables({}), {});
+        check_invalid_all({{0x80, 0, 0, 0}, 31, 1}, long_codes);  // Truncated 32-bit code.
+        check_invalid_all({{0x80, 0}, 16, 1}, single);            // Invalid prefix.
+        check_invalid_all({{0}, 8, 9}, single);                  // Too many expected symbols.
+        check_invalid_all({{0}, 8, 7}, single);                  // Too few expected symbols.
+        check_invalid_all({{0}, 1, 1}, huffman::make_decode_tables({}));
+        check_invalid_all({{0}, 0, 1}, single);                  // Empty bits, nonempty output.
+
         const auto timing = huffman::benchmark_decoder(
             huffman::decode_buffer, long_input, five, expected, 1, 3);
         require(timing.median_ms >= 0, "benchmark returned negative time");

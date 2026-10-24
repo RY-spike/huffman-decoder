@@ -1,0 +1,221 @@
+2026-10-24 Asia/Shanghai
+HEAD=8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b
+origin/main=8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b
+Branch=feature/encoder-integration
+Historical corpus audit; no corpus download or full Pride rerun.
+dataset=1 name=alice_gutenberg11.txt bytes=174311 distinct=95 maxlen=18 bits=834792 payload=104349 padding=0 source_metadata_checksums=PASS
+formal_corpus_present=False recorded_sha256=01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e
+dataset=2 name=pride_gutenberg1342.txt bytes=772386 distinct=104 maxlen=20 bits=3572748 payload=446594 padding=4 source_metadata_checksums=PASS
+formal_corpus_present=False recorded_sha256=3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75
+median_recomputed dataset=1 scope=decode_symbols variant=baseline n=30 median_ms=2.1271 PASS
+median_recomputed dataset=1 scope=decode_symbols variant=base n=30 median_ms=2.07905 PASS
+median_recomputed dataset=1 scope=decode_symbols variant=buffer n=30 median_ms=1.4008 PASS
+median_recomputed dataset=1 scope=decode_and_restore_bytes variant=baseline n=30 median_ms=2.1578 PASS
+median_recomputed dataset=1 scope=decode_and_restore_bytes variant=base n=30 median_ms=2.1452 PASS
+median_recomputed dataset=1 scope=decode_and_restore_bytes variant=buffer n=30 median_ms=1.44455 PASS
+median_recomputed dataset=2 scope=decode_symbols variant=baseline n=30 median_ms=9.11535 PASS
+median_recomputed dataset=2 scope=decode_symbols variant=base n=30 median_ms=8.9525 PASS
+median_recomputed dataset=2 scope=decode_symbols variant=buffer n=30 median_ms=6.0531 PASS
+median_recomputed dataset=2 scope=decode_and_restore_bytes variant=baseline n=30 median_ms=9.5023 PASS
+median_recomputed dataset=2 scope=decode_and_restore_bytes variant=base n=30 median_ms=9.3317 PASS
+median_recomputed dataset=2 scope=decode_and_restore_bytes variant=buffer n=30 median_ms=6.39425 PASS
+local tests/data/alice.txt sha256=01B38EA4C710A84BC18D0BD41271A5A1A92B94E97B2812F4DECE97D4A694725E PASS
+Formal audit PASS: datasets=2 measurements=360 summary=12 verification=12 (33 comparisons each) checksums=6; all medians recomputed; records equal origin/main.
+
+> cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+
+> cmake --build build
+[1/16] Building CXX object CMakeFiles/huffman_decoder.dir/src/decoder_hybrid.cpp.obj
+[2/16] Building CXX object CMakeFiles/test_benchmark.dir/tests/test_benchmark.cpp.obj
+[3/16] Building CXX object CMakeFiles/huffman_decoder.dir/src/benchmark.cpp.obj
+[4/16] Building CXX object CMakeFiles/huffman_decoder.dir/src/decoder_baseline.cpp.obj
+[5/16] Building CXX object CMakeFiles/hybrid_experiment.dir/experiments/hybrid_experiment.cpp.obj
+[6/16] Building CXX object CMakeFiles/test_decoder.dir/tests/test_decoder.cpp.obj
+[7/16] Building CXX object CMakeFiles/huffman_encoder.dir/src/encoder.cpp.obj
+[8/16] Linking CXX static library libhuffman_decoder.a
+[9/16] Linking CXX static library libhuffman_encoder.a
+[10/16] Building CXX object CMakeFiles/test_encoder_integration.dir/tests/test_encoder_integration.cpp.obj
+[11/16] Linking CXX executable test_benchmark.exe
+[12/16] Linking CXX executable test_decoder.exe
+[13/16] Linking CXX executable hybrid_experiment.exe
+[14/16] Linking CXX executable test_encoder_integration.exe
+[15/16] Building CXX object CMakeFiles/benchmark_files.dir/benchmarks/benchmark_files.cpp.obj
+[16/16] Linking CXX executable benchmark_files.exe
+
+> ctest --test-dir build --output-on-failure -V
+UpdateCTestConfiguration  from :D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/DartConfiguration.tcl
+Test project D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: decoder_correctness
+
+1: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\test_decoder.exe"
+1: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+1: Test timeout computed to be: 10000000
+1: All decoder checks passed
+1/5 Test #1: decoder_correctness ..............   Passed    0.03 sec
+test 2
+    Start 2: encoder_integration
+
+2: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\test_encoder_integration.exe"
+2: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+2: Test timeout computed to be: 10000000
+2: All encoder integration checks passed
+2/5 Test #2: encoder_integration ..............   Passed    0.04 sec
+test 3
+    Start 3: benchmark_statistics
+
+3: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\test_benchmark.exe"
+3: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+3: Test timeout computed to be: 10000000
+3: Benchmark statistics checks passed
+3/5 Test #3: benchmark_statistics .............   Passed    0.02 sec
+test 4
+    Start 4: benchmark_cli
+
+4: Test command: D:\LeStoreDownload\Dev-Cpp\winlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64ucrt-13.0.0-r5\mingw64\bin\cmake.exe "-DBENCHMARK_EXE=D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/benchmark_files.exe" "-DINPUT_FILE=D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/tests/data/benchmark_sample.txt" "-DOUTPUT_ROOT=D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/benchmark-cli-tests" "-P" "D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/tests/check_benchmark_cli.cmake"
+4: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+4: Test timeout computed to be: 10000000
+4/5 Test #4: benchmark_cli ....................   Passed    0.14 sec
+test 5
+    Start 5: hybrid_alice
+
+5: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\hybrid_experiment.exe" "D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/tests/data/alice.txt"
+5: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+5: Test timeout computed to be: 10000000
+5: symbols=174311 bits=834792 max_length=18 warmups=3 runs=30
+5: baseline_ms=1.58115
+5: p=8 correctness=PASS median_ms=2.4027 speedup=0.658072 build_ms=0.0446 entry_bytes=68 table_payload_bytes=17408
+5: p=10 correctness=PASS median_ms=3.0143 speedup=0.52455 build_ms=0.0633 entry_bytes=68 table_payload_bytes=69632
+5: p=12 correctness=PASS median_ms=2.0967 speedup=0.754114 build_ms=0.1478 entry_bytes=68 table_payload_bytes=278528
+5/5 Test #5: hybrid_alice .....................   Passed    0.35 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =   0.59 sec
+
+> git diff --check
+
+> git diff --cached --check
+Preservation checks PASS: index, HEAD, origin/main, stash, historical records and unrelated files unchanged; document links resolve.
+
+===== 2026-10-24: formal worktree after separating local hybrid =====
+HEAD=8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b
+origin/main=8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b
+Build directory: build/formal-midterm (new)
+Preserved historical 5/5 above; current formal suite must contain four tests.
+
+> cmake -S . -B build/formal-midterm -G Ninja -DCMAKE_BUILD_TYPE=Release
+-- The CXX compiler identification is GNU 15.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/LeStoreDownload/Dev-Cpp/winlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64ucrt-13.0.0-r5/mingw64/bin/c++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (2.9s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm
+
+> cmake --build build/formal-midterm
+[1/13] Building CXX object CMakeFiles/huffman_decoder.dir/src/decoder_baseline.cpp.obj
+[2/13] Building CXX object CMakeFiles/huffman_decoder.dir/src/benchmark.cpp.obj
+[3/13] Building CXX object CMakeFiles/test_benchmark.dir/tests/test_benchmark.cpp.obj
+[4/13] Linking CXX static library libhuffman_decoder.a
+[5/13] Building CXX object CMakeFiles/test_decoder.dir/tests/test_decoder.cpp.obj
+[6/13] Building CXX object CMakeFiles/huffman_encoder.dir/src/encoder.cpp.obj
+[7/13] Linking CXX static library libhuffman_encoder.a
+[8/13] Linking CXX executable test_benchmark.exe
+[9/13] Linking CXX executable test_decoder.exe
+[10/13] Building CXX object CMakeFiles/test_encoder_integration.dir/tests/test_encoder_integration.cpp.obj
+[11/13] Linking CXX executable test_encoder_integration.exe
+[12/13] Building CXX object CMakeFiles/benchmark_files.dir/benchmarks/benchmark_files.cpp.obj
+[13/13] Linking CXX executable benchmark_files.exe
+
+> ctest --test-dir build/formal-midterm --output-on-failure -V
+UpdateCTestConfiguration  from :D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm/DartConfiguration.tcl
+Test project D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: decoder_correctness
+
+1: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\formal-midterm\test_decoder.exe"
+1: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm
+1: Test timeout computed to be: 10000000
+1: All decoder checks passed
+1/4 Test #1: decoder_correctness ..............   Passed    0.03 sec
+test 2
+    Start 2: encoder_integration
+
+2: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\formal-midterm\test_encoder_integration.exe"
+2: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm
+2: Test timeout computed to be: 10000000
+2: All encoder integration checks passed
+2/4 Test #2: encoder_integration ..............   Passed    0.03 sec
+test 3
+    Start 3: benchmark_statistics
+
+3: Test command: "D:\Desktop\my fail\学校文件\霍夫曼\huffman-decoder\build\formal-midterm\test_benchmark.exe"
+3: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm
+3: Test timeout computed to be: 10000000
+3: Benchmark statistics checks passed
+3/4 Test #3: benchmark_statistics .............   Passed    0.03 sec
+test 4
+    Start 4: benchmark_cli
+
+4: Test command: D:\LeStoreDownload\Dev-Cpp\winlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64ucrt-13.0.0-r5\mingw64\bin\cmake.exe "-DBENCHMARK_EXE=D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm/benchmark_files.exe" "-DINPUT_FILE=D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/tests/data/benchmark_sample.txt" "-DOUTPUT_ROOT=D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm/benchmark-cli-tests" "-P" "D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/tests/check_benchmark_cli.cmake"
+4: Working Directory: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build/formal-midterm
+4: Test timeout computed to be: 10000000
+4/4 Test #4: benchmark_cli ....................   Passed    0.13 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.23 sec
+
+> git diff --check
+warning: in the working copy of 'CMakeLists.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_decoder.cpp', LF will be replaced by CRLF the next time Git touches it
+
+Separation checks PASS: formal build contains no hybrid or local corpus dependency; exact origin/main restoration for three files; generic decoder assertions retained; local experimental files preserved; index empty; HEAD/origin/main/stash unchanged; document links self-contained.
+`n===== Refresh customary build directory after separation =====
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+[1/13] Building CXX object CMakeFiles/huffman_decoder.dir/src/benchmark.cpp.obj
+[2/13] Building CXX object CMakeFiles/test_benchmark.dir/tests/test_benchmark.cpp.obj
+[3/13] Building CXX object CMakeFiles/huffman_decoder.dir/src/decoder_baseline.cpp.obj
+[4/13] Building CXX object CMakeFiles/test_decoder.dir/tests/test_decoder.cpp.obj
+[5/13] Building CXX object CMakeFiles/huffman_encoder.dir/src/encoder.cpp.obj
+[6/13] Linking CXX static library libhuffman_decoder.a
+[7/13] Building CXX object CMakeFiles/test_encoder_integration.dir/tests/test_encoder_integration.cpp.obj
+[8/13] Linking CXX static library libhuffman_encoder.a
+[9/13] Linking CXX executable test_decoder.exe
+[10/13] Linking CXX executable test_benchmark.exe
+[11/13] Linking CXX executable test_encoder_integration.exe
+[12/13] Building CXX object CMakeFiles/benchmark_files.dir/benchmarks/benchmark_files.cpp.obj
+[13/13] Linking CXX executable benchmark_files.exe
+Test project D:/Desktop/my fail/学校文件/霍夫曼/huffman-decoder/build
+    Start 1: decoder_correctness
+1/4 Test #1: decoder_correctness ..............   Passed    0.03 sec
+    Start 2: encoder_integration
+2/4 Test #2: encoder_integration ..............   Passed    0.02 sec
+    Start 3: benchmark_statistics
+3/4 Test #3: benchmark_statistics .............   Passed    0.02 sec
+    Start 4: benchmark_cli
+4/4 Test #4: benchmark_cli ....................   Passed    0.08 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.16 sec

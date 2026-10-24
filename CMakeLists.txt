@@ -34,6 +34,10 @@ add_test(NAME encoder_integration COMMAND test_encoder_integration)
 
 add_executable(benchmark_files benchmarks/benchmark_files.cpp)
 target_link_libraries(benchmark_files PRIVATE huffman_encoder huffman_decoder)
+if(MINGW)
+    # benchmark_files uses wmain on Windows, including MinGW builds.
+    target_link_options(benchmark_files PRIVATE -municode)
+endif()
 target_compile_definitions(benchmark_files PRIVATE HUFFMAN_BUILD_CONFIG="$<CONFIG>")
 if(MSVC)
     target_compile_options(benchmark_files PRIVATE /W4 /permissive-)
