@@ -1,0 +1,19 @@
+{
+  "purpose": "Midterm demonstration; not a replacement for the 2026-10-23 formal measurements",
+  "started_utc": "2026-10-25T08:50:25.0968631Z",
+  "finished_utc": "2026-10-25T08:50:28.8185283Z",
+  "git_head": "8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b",
+  "working_tree_state": [
+    " M CMakeLists.txt",
+    "?? examples/",
+    "?? results/2026-10-25-midterm-demo/",
+    "?? scripts/run_midterm_demo.ps1"
+  ],
+  "abca": "PASS",
+  "ctest_exit_code": 0,
+  "restored_file_hashes_matched": 6,
+  "demo_executable_sha256": "9d75f52401c33d5c4dd6252b1f97f94ed39dece362855072171bea1edeecf6af",
+  "demo_source_sha256": "73e2ecc0ec0010fa43815a8d501defeb5d39ba1441e89e46e7bb90b7add58a5c",
+  "demo_script_sha256": "8fbce812545842d7cfdf94450bdfac422704c4cb7af6d4bdd76e84fb13ca3615",
+  "full_text_metadata": "text-check/metadata.json"
+}

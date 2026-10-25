@@ -1,0 +1,3 @@
+dataset_id,name,source_path,input_bytes,distinct_symbols,max_code_length,encoded_bits,payload_bytes,average_bits_per_symbol,payload_ratio
+1,"alice_gutenberg11.txt","data/corpus/alice_gutenberg11.txt",174311,95,18,834792,104349,4.789095353,0.598636919
+2,"pride_gutenberg1342.txt","data/corpus/pride_gutenberg1342.txt",772386,104,20,3572748,446594,4.625599118,0.578200537

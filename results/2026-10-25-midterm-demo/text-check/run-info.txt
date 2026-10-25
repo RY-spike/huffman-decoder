@@ -1,0 +1,11 @@
+configuration=Release
+compiler=MSVC 194435229
+cplusplus=201703
+clock=steady_clock
+clock_is_steady=1
+case_order=rotated_each_round
+allocation=before_timing
+comparison=after_each_timed_call
+file_io=outside_timing
+warmup_runs=1
+measured_runs=3

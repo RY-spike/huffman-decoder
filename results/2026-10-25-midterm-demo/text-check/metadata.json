@@ -1,0 +1,150 @@
+{
+  "started_utc": "2026-10-25T08:50:28.0413554Z",
+  "finished_utc": "2026-10-25T08:50:28.7847812Z",
+  "cpu": "12th Gen Intel(R) Core(TM) i9-12900H",
+  "logical_processors": 20,
+  "os": "Microsoft Windows NT 10.0.26200.0",
+  "process_bits": 64,
+  "power_scheme": "电源方案 GUID: 85d583c5-cf2e-4197-80fd-3789a227a72c  (均衡模式)",
+  "affinity": "OS default; core type and background load not controlled",
+  "build_configuration": "Release",
+  "executable": "build/Release/benchmark_files.exe",
+  "executable_sha256": "96b29b0a679ed4d5b67cde0eb82f1575978d6e44a1f4b639111f70d0295cf124",
+  "source_base_commit": "8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b",
+  "working_tree_state": [
+    " M CMakeLists.txt",
+    "?? examples/",
+    "?? results/2026-10-25-midterm-demo/",
+    "?? scripts/run_midterm_demo.ps1"
+  ],
+  "source_sha256": [
+    {
+      "path": "benchmarks/benchmark_files.cpp",
+      "sha256": "f49efb27ba575738ef039cd943e6719ba801023500d279b3b1e089a27fd51ba3"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "7438035de34d9a12343a903989e95681b8c4e91dcb3bb00b3542ce3e2496f602"
+    },
+    {
+      "path": "examples/midterm_demo.cpp",
+      "sha256": "73e2ecc0ec0010fa43815a8d501defeb5d39ba1441e89e46e7bb90b7add58a5c"
+    },
+    {
+      "path": "include/huffman/benchmark.hpp",
+      "sha256": "7c11de06a2d81a1cfcaad631c8d17af568219fca6684828a2f6e963cdcf1c93c"
+    },
+    {
+      "path": "include/huffman/decoder.hpp",
+      "sha256": "5bbe6eefb49f891089a3ff13bd8050c0aea69c3ec416c59a779251a0cf905509"
+    },
+    {
+      "path": "include/huffman/encoder.hpp",
+      "sha256": "e694b3811d584f4b660086279c365e8dcb7d27bf3140ba50fb713307ef49d990"
+    },
+    {
+      "path": "include/huffman/types.hpp",
+      "sha256": "4acef23b84cce00fd3065ce14d6cc07122145805863ebcb328e8cf5bd49f81ea"
+    },
+    {
+      "path": "src/benchmark.cpp",
+      "sha256": "fe2021c577a47006ac350fa27cf9c7f91ccdb6df361c9acc1feff86b80588ba2"
+    },
+    {
+      "path": "src/decoder_baseline.cpp",
+      "sha256": "833a3bcf9c498e6081831cad334ce8133bad99547eeebf5082380e453a7d628d"
+    },
+    {
+      "path": "src/encoder.cpp",
+      "sha256": "09d890f7b99f2d058b1971902489810b9364eb65fc8f9ab45c551d2ca18d76bb"
+    },
+    {
+      "path": "tests/compare.cpp",
+      "sha256": "26e02c15b72958e71739964d39e0baeef3cf7231cf896431c433717e2f21c83b"
+    },
+    {
+      "path": "tests/test_benchmark.cpp",
+      "sha256": "bfe454a1c51f064e2d63dc80a44db43bb25b5264bcf106b398307d5bc52b4fca"
+    },
+    {
+      "path": "tests/test_decoder.cpp",
+      "sha256": "968206b7452db6c3ae2f56bd5ee53080690e31e251a7315380ce224ba6ccd6bf"
+    },
+    {
+      "path": "tests/test_encoder_integration.cpp",
+      "sha256": "786b1b65846963e27165aaeb07456598119c29d434c6ac4195ae0bc539ea07b5"
+    }
+  ],
+  "arguments": [
+    "--output-dir",
+    "results\\2026-10-25-midterm-demo\\text-check",
+    "--warmup",
+    "1",
+    "--runs",
+    "3",
+    "--input",
+    "data/corpus/alice_gutenberg11.txt",
+    "--input",
+    "data/corpus/pride_gutenberg1342.txt"
+  ],
+  "inputs": [
+    {
+      "dataset_id": 1,
+      "path": "data/corpus/alice_gutenberg11.txt",
+      "bytes": 174311,
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "source_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt"
+    },
+    {
+      "dataset_id": 2,
+      "path": "data/corpus/pride_gutenberg1342.txt",
+      "bytes": 772386,
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "source_url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt"
+    }
+  ],
+  "restored_files": [
+    {
+      "dataset_id": "1",
+      "variant": "baseline",
+      "restored_file": "restored/1.baseline.bin",
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "1",
+      "variant": "base",
+      "restored_file": "restored/1.base.bin",
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "1",
+      "variant": "buffer",
+      "restored_file": "restored/1.buffer.bin",
+      "sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "2",
+      "variant": "baseline",
+      "restored_file": "restored/2.baseline.bin",
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "2",
+      "variant": "base",
+      "restored_file": "restored/2.base.bin",
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "matches_input": true
+    },
+    {
+      "dataset_id": "2",
+      "variant": "buffer",
+      "restored_file": "restored/2.buffer.bin",
+      "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "matches_input": true
+    }
+  ]
+}

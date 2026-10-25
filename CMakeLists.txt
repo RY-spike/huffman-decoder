@@ -53,3 +53,7 @@ add_test(NAME benchmark_cli COMMAND ${CMAKE_COMMAND}
     "-DINPUT_FILE=${CMAKE_CURRENT_SOURCE_DIR}/tests/data/benchmark_sample.txt"
     "-DOUTPUT_ROOT=${CMAKE_CURRENT_BINARY_DIR}/benchmark-cli-tests"
     -P "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_benchmark_cli.cmake")
+
+# Offline, manually checkable midterm demonstration. The four CTest suites remain unchanged.
+add_executable(midterm_demo examples/midterm_demo.cpp)
+target_link_libraries(midterm_demo PRIVATE huffman_encoder huffman_decoder)

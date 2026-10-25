@@ -6,6 +6,15 @@
 
 ## 构建与检查
 
+中期阶段的收尾材料已集中到以下入口。按最新通知，汇报预计在11月初、具体日期待通知，PPT自述共5分钟。
+
+- [伊力亚尔的交付状态、个人贡献与进度对照](docs/midterm/ilyar-midterm-handoff.md)
+- [离线演示操作说明](docs/midterm/demo-guide.md)
+- [五分钟自述技术素材](docs/midterm/five-minute-outline.md)
+- [离线备用记录页面](docs/midterm/demo-backup.html)（下载到本地后用浏览器打开）
+
+已完成Release编译并备齐语料后，可在仓库根目录执行 `./scripts/run_midterm_demo.ps1`，离线核对ABCA、4项CTest与两份全文。现场演示计时不替代正式性能记录。
+
 在 **Visual Studio 2022 Developer PowerShell** 中使用 CMake（该终端会将 CMake 加入 `PATH`）：
 
 ```powershell

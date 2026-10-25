@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>霍夫曼解码 中期演示记录</title>
+<style>
+body{margin:0;background:#f2f4f7;color:#19212d;font-family:'Microsoft YaHei',sans-serif;line-height:1.6}
+main{max-width:1050px;margin:32px auto;padding:28px 36px;background:white;border-radius:12px}
+h1{font-size:28px;margin:0 0 12px}h2{font-size:21px;margin:28px 0 12px}p{margin:10px 0}
+.note{padding:14px 18px;background:#eaf1fa;border-left:4px solid #37669b}.pass{color:#17623a;font-weight:bold}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#17212f;color:#e9f0f7;padding:18px;border-radius:6px;font:14px/1.7 Consolas,monospace}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #d8dfe7;padding:10px;text-align:left}th{background:#edf1f5}
+.hash{font:12px/1.6 Consolas,monospace;overflow-wrap:anywhere}.meta{font-size:13px;color:#4b596b;overflow-wrap:anywhere}
+@media(max-width:700px){main{margin:0;padding:20px}table{font-size:12px}th,td{padding:6px}}
+@media print{body{background:white}main{margin:0;max-width:none;padding:0}pre{color:black;background:#f4f4f4}h2{break-after:avoid}tr{break-inside:avoid}}
+</style></head><body><main>
+<h1>霍夫曼解码 中期演示记录</h1>
+<p class="note">这是已完成实验的静态备用记录，不是实时运行界面。学校要求5分钟PPT自述，程序展示用于备用或追问。</p>
+<p class="pass">演示检查通过：ABCA还原、4项CTest、6份真实文本还原文件校验。</p>
+<p class="meta">演示完成时间 UTC：10/25/2026 08:50:28<br>运行时基准提交：8a15d7a9260b9f7e405dbd2207663b5c70e4ef3b（含当时未提交改动，详见receipt.json）。<br>记录目录：results/2026-10-25-midterm-demo</p>
+<h2>手算样例与三个解码版本</h2><pre>Input: ABCA (4 bytes)
+Manual canonical codebook: A=0, B=10, C=11
+Effective bits: 010110; padding: 00
+Encoded byte: 0x58
+bit_count=6; symbol_count=4
+baseline: ABCA [PASS]
+base: ABCA [PASS]
+buffer: ABCA [PASS]
+DEMO PASS: all three outputs match the original bytes.
+</pre>
+<h2>自动化检查的实际输出</h2><pre>Internal ctest changing into directory: C:/Users/a&#39;a/Desktop/大创/中期答辩/huffman-decoder-github/build
+Test project C:/Users/a&#39;a/Desktop/大创/中期答辩/huffman-decoder-github/build
+    Start 1: decoder_correctness
+1/4 Test #1: decoder_correctness ..............   Passed    0.21 sec
+    Start 2: encoder_integration
+2/4 Test #2: encoder_integration ..............   Passed    0.15 sec
+    Start 3: benchmark_statistics
+3/4 Test #3: benchmark_statistics .............   Passed    0.14 sec
+    Start 4: benchmark_cli
+4/4 Test #4: benchmark_cli ....................   Passed    0.32 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.86 sec
+</pre>
+<h2>原文与还原文件校验</h2>
+<p>数据1为Alice，数据2为Pride。下表来自独立落盘哈希检查，6份输出均与对应输入一致。</p>
+<table><thead><tr><th>数据</th><th>版本</th><th>SHA-256</th><th>结果</th></tr></thead><tbody><tr><td>1</td><td>baseline</td><td class="hash">01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e</td><td>PASS</td></tr>
+<tr><td>1</td><td>base</td><td class="hash">01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e</td><td>PASS</td></tr>
+<tr><td>1</td><td>buffer</td><td class="hash">01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e</td><td>PASS</td></tr>
+<tr><td>2</td><td>baseline</td><td class="hash">3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75</td><td>PASS</td></tr>
+<tr><td>2</td><td>base</td><td class="hash">3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75</td><td>PASS</td></tr>
+<tr><td>2</td><td>buffer</td><td class="hash">3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75</td><td>PASS</td></tr></tbody></table>
+<h2>正式性能结果 2026年10月23日</h2>
+<p>纯解码scope；12th Gen Intel(R) Core(TM) i9-12900H；x64 Release；每组预热3次、测量30次。此处引用正式CSV，不使用本次3次演示计时。</p>
+<table><thead><tr><th>文本</th><th>版本</th><th>中位耗时 ms</th><th>相对基线加速比</th></tr></thead><tbody><tr><td>Alice</td><td>baseline</td><td>2.127100000</td><td>1.000000000</td></tr>
+<tr><td>Alice</td><td>base</td><td>2.079050000</td><td>1.023111517</td></tr>
+<tr><td>Alice</td><td>buffer</td><td>1.400800000</td><td>1.518489435</td></tr>
+<tr><td>Pride</td><td>baseline</td><td>9.115350000</td><td>1.000000000</td></tr>
+<tr><td>Pride</td><td>base</td><td>8.952500000</td><td>1.018190450</td></tr>
+<tr><td>Pride</td><td>buffer</td><td>6.053100000</td><td>1.505897804</td></tr></tbody></table>
+<p>buffer在本轮两份文本上约为基线速度的1.5倍。计时排除文件读写、编码、建表、预分配和结果比较。Base独立收益尚不能认定稳定；未固定核心与频率，结果不代表所有数据。</p>
+<p class="meta">正式来源：results/2026-10-23-byte-text/summary.csv。演示来源：results/2026-10-25-midterm-demo。词级、混合表和AVX2不属于本轮已验证成果。</p>
+</main></body></html>

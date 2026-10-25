@@ -1,0 +1,14 @@
+Internal ctest changing into directory: C:/Users/a'a/Desktop/大创/中期答辩/huffman-decoder-github/build
+Test project C:/Users/a'a/Desktop/大创/中期答辩/huffman-decoder-github/build
+    Start 1: decoder_correctness
+1/4 Test #1: decoder_correctness ..............   Passed    0.21 sec
+    Start 2: encoder_integration
+2/4 Test #2: encoder_integration ..............   Passed    0.15 sec
+    Start 3: benchmark_statistics
+3/4 Test #3: benchmark_statistics .............   Passed    0.14 sec
+    Start 4: benchmark_cli
+4/4 Test #4: benchmark_cli ....................   Passed    0.32 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.86 sec

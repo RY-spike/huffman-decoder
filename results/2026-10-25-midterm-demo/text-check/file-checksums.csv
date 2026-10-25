@@ -1,0 +1,7 @@
+"dataset_id","variant","restored_file","sha256","matches_input"
+"1","baseline","restored/1.baseline.bin","01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e","True"
+"1","base","restored/1.base.bin","01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e","True"
+"1","buffer","restored/1.buffer.bin","01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e","True"
+"2","baseline","restored/2.baseline.bin","3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75","True"
+"2","base","restored/2.base.bin","3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75","True"
+"2","buffer","restored/2.buffer.bin","3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75","True"

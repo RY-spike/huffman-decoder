@@ -1,0 +1,9 @@
+Input: ABCA (4 bytes)
+Manual canonical codebook: A=0, B=10, C=11
+Effective bits: 010110; padding: 00
+Encoded byte: 0x58
+bit_count=6; symbol_count=4
+baseline: ABCA [PASS]
+base: ABCA [PASS]
+buffer: ABCA [PASS]
+DEMO PASS: all three outputs match the original bytes.
